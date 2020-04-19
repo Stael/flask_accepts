@@ -171,6 +171,10 @@ def _ma_field_to_fr_field(value: ma.Field) -> dict:
     if hasattr(value, "missing") and type(value.missing) != ma.utils._Missing:
         fr_field_parameters["default"] = value.missing
 
+    if hasattr(value, "data_key"):
+        fr_field_parameters["attribute"] = value.data_key
+        fr_field_parameters["title"] = value.data_key
+
     return fr_field_parameters
 
 
